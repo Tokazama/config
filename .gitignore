@@ -1,0 +1,12 @@
+
+/Manifest.toml
+/docs/build/
+.DS_Store
+nix
+zathura
+rstudio
+configstore
+iterm2
+*~
+*#*
+*#*#
