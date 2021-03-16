@@ -11,7 +11,6 @@ local fn = vim.fn
 	/*
 	 * INSTALL PACKER
 	 */
---]]
 
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 
@@ -36,6 +35,7 @@ end
 
 execute 'packadd packer.nvim'
 
+--]]
 return require('packer').startup{function(use)
     use {'wbthomason/packer.nvim', opt=true}
     use {'nvim-lua/plenary.nvim', opt=true}

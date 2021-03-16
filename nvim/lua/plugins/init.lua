@@ -1,39 +1,34 @@
 
-local using_nvim_lsp = vim.g.using_nvim_lsp > 0
-local using_vscode = vim.g.using_vscode > 0
-
 local function add(name) vim.api.nvim_command('packadd '..name) end
 
 
-if not using_vscode then
-    add 'iron.nvim'
-    -- add 'nerdtree'
-    add 'nerdcommenter'
-    add 'fzf'
-    add 'fzf.vim'
-    add 'vim-markdown'
-    add 'plenary.nvim'
+add 'iron.nvim'
+-- add 'nerdtree'
+add 'nerdcommenter'
+add 'fzf'
+add 'fzf.vim'
+add 'vim-markdown'
+add 'plenary.nvim'
 
-    add 'popup.nvim'
-    add 'telescope.nvim'
+add 'popup.nvim'
+add 'telescope.nvim'
 
-    -- ### git
-    add 'vim-fugitive'
-    add 'vim-gitgutter'
+-- ### git
+add 'vim-fugitive'
+add 'vim-gitgutter'
 
-    -- ### Specific Language Support / Syntax Highlighting / Formatting
-    add 'julia-vim'
+-- ### Specific Language Support / Syntax Highlighting / Formatting
+add 'julia-vim'
 
-    -- Themes
-    add 'galaxyline.nvim'
-    add 'nvim-web-devicons'
-    add 'nvim-colorizer.lua'
-    add 'indentLine'
-    add 'nvim-tree.lua'
-    add 'nvim-bufferline.lua'
-    add 'colorbuddy.nvim'
-    add 'nvim-lspconfig'
-end
+-- Themes
+add 'galaxyline.nvim'
+add 'nvim-web-devicons'
+add 'nvim-colorizer.lua'
+add 'indentLine'
+add 'nvim-tree.lua'
+add 'nvim-bufferline.lua'
+add 'colorbuddy.nvim'
+add 'nvim-lspconfig'
 
 require('plugins/repl')
 
