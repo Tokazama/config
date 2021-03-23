@@ -4,7 +4,6 @@ function _G.dump(...)
     print(unpack(objects))
 end
 
-
 require('core')
 require('plugins/packer')
 require('plugins/init')

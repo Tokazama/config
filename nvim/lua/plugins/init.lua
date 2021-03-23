@@ -1,7 +1,6 @@
 
 local function add(name) vim.api.nvim_command('packadd '..name) end
 
-
 add 'iron.nvim'
 -- add 'nerdtree'
 add 'nerdcommenter'
@@ -15,7 +14,6 @@ add 'telescope.nvim'
 
 -- ### git
 add 'vim-fugitive'
-add 'vim-gitgutter'
 
 -- ### Specific Language Support / Syntax Highlighting / Formatting
 add 'julia-vim'
@@ -29,6 +27,8 @@ add 'nvim-tree.lua'
 add 'nvim-bufferline.lua'
 add 'colorbuddy.nvim'
 add 'nvim-lspconfig'
+add 'completion-nvim'
+add 'gitsigns.nvim'
 
 require('plugins/repl')
 
@@ -42,6 +42,7 @@ function nvim_colorizer()
     tmux = { names = false; };
     'javascript';
     'javascriptreact';
+    'lua';
     'typescript';
     'typescriptreact';
     html = {
@@ -60,7 +61,7 @@ require'bufferline'.setup{
     numbers = "buffer_id",
     number_style = "superscript",
     mappings = true,
-    diagnostics = false,
+    --diagnostics = false,
     show_buffer_close_icons = false,
     -- persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
@@ -72,9 +73,13 @@ require'bufferline'.setup{
 }
 require('plugins/telescope')
 
-require('plugins/lsp')
+--require('plugins/lsp')
 
 require('plugins/theme')
+
+require('plugins/completion')
+
+require('plugins/gitsigns')
 
 --[[
 

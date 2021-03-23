@@ -21,6 +21,7 @@ if v.o.background == 'dark' then
     Color.new('blue1', "#61afef")
     Color.new('blue2', "#61afef")
     Color.new('purple1', "#c678dd")
+    Color.new('purple2', "#a626a4")
     Color.new('green1', "#98c379")
     Color.new('green2', "#50a14f")
     Color.new('red1', "#e06c75")
@@ -44,10 +45,10 @@ else
     Color.new('blue1', "#4078f2")
     Color.new('blue2', "#8aaeff")
     Color.new('purple1', "#a626a4")
-    Color.new('purple2', "#c678dd")
+    Color.new('purple2', "#edb0ff")
     Color.new('green1', "#50a14f")
     Color.new('green2', "#c7edab")
-    Color.new('red1', "#e45649")
+    Color.new('red1', "#ff7569")
     Color.new('red2', "#ca1243")
     Color.new('light_gold', "#986801")
     Color.new('dark_gold', "#c18401")
@@ -117,8 +118,8 @@ Group.new('Question',     c.blue1,        c.none,      no)
 Group.new('Search',       c.syntax_bg,       c.dark_gold,        no)
 Group.new('SpecialKey',   c.special_grey, c.none,      no)
 Group.new('Whitespace',   c.special_grey, c.none,      no)
-Group.new('StatusLine',   c.mono_1,       c.mono_1,  no)
-Group.new('StatusLineNC', c.mono_1,       c.mono_1,      no)
+Group.new('StatusLine',   c.mono_2,       c.mono_2,  no)
+Group.new('StatusLineNC', c.mono_2,       c.mono_2,      no)
 Group.new('TabLine',      c.mono_2,       c.visual_grey,    no)
 Group.new('TabLineFill',  c.mono_3,       c.visual_grey,    no)
 Group.new('TabLineSel',   c.mono_3,       c.blue1,          no)
@@ -378,6 +379,7 @@ Group.new('TSVariable',           c.cyan, c.none, no)
 Group.new('TSVariableBuiltin',    c.dark_gold, c.none, no)
 
 local gl = require('galaxyline')
+local diagnostic = require('galaxyline.provider_diagnostic')
 local colors = require('galaxyline.theme').default
 local condition = require('galaxyline.condition')
 local gls = gl.section
@@ -386,7 +388,7 @@ gl.short_line_list = {'NvimTree','vista','dbui','packer'}
 gls.left[1] = {
   RainbowRed = {
     provider = function() return '▊ ' end,
-    highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()}
+    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
   },
 }
 gls.left[2] = {
@@ -417,7 +419,7 @@ gls.left[2] = {
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()])
       return ' 🅩 '
     end,
-    highlight = {c.red1:to_rgb(), c.mono_1:to_rgb()},
+    highlight = {c.red1:to_rgb(), c.mono_2:to_rgb()},
   },
 }
 
@@ -426,15 +428,15 @@ gls.left[3] = {
     provider = 'FileSize',
     condition = condition.buffer_not_empty,
     separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_1:to_rgb()},
-    highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()}
+    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_2:to_rgb()},
+    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
   }
 }
 gls.left[4] ={
   FileIcon = {
     provider = 'FileIcon',
     condition = condition.buffer_not_empty,
-    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, c.mono_1:to_rgb()},
+    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, c.mono_2:to_rgb()},
   }
 }
 
@@ -443,8 +445,8 @@ gls.left[5] = {
     provider = 'FileName',
     condition = condition.buffer_not_empty,
     separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_1:to_rgb()},
-    highlight = {c.purple2:to_rgb(), c.mono_1:to_rgb()}
+    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_2:to_rgb()},
+    highlight = {c.purple2:to_rgb(), c.mono_2:to_rgb()}
   }
 }
 
@@ -452,8 +454,8 @@ gls.left[6] = {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_1:to_rgb()},
-    highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()}
+    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_2:to_rgb()},
+    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
   },
 }
 
@@ -461,11 +463,11 @@ gls.left[7] = {
   PerCent = {
     provider = 'LinePercent',
     separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()},
-    highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()}
+    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
+    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
   }
 }
-
+--[[
 gls.left[8] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
@@ -496,6 +498,8 @@ gls.left[11] = {
     highlight = {c.blue2:to_rgb(), c.mono_1:to_rgb()},
   }
 }
+]]--
+
 gls.mid[1] = {
   ShowLspClient = {
     provider = 'GetLspClient',
@@ -507,7 +511,7 @@ gls.mid[1] = {
       return true
     end,
     icon = ' LSP:',
-    highlight = {c.blue2:to_rgb(), c.mono_1:to_rgb()}
+    highlight = {c.blue2:to_rgb(), c.mono_2:to_rgb()}
   }
 }
 gls.right[1] = {
@@ -515,8 +519,8 @@ gls.right[1] = {
     provider = 'FileEncode',
     condition = condition.hide_in_width,
     separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()},
-    highlight = {c.green2:to_rgb(), c.mono_1:to_rgb()}
+    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
+    highlight = {c.green2:to_rgb(), c.mono_2:to_rgb()}
   }
 }
 
@@ -525,8 +529,8 @@ gls.right[2] = {
     provider = 'FileFormat',
     condition = condition.hide_in_width,
     separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()},
-    highlight = {c.green2:to_rgb(), c.mono_1:to_rgb()}
+    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
+    highlight = {c.green2:to_rgb(), c.mono_2:to_rgb()}
   }
 }
 
@@ -535,8 +539,8 @@ gls.right[3] = {
     provider = function() return '  ' end,
     condition = condition.check_git_workspace,
     separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()},
-    highlight = {c.purple2:to_rgb(), c.mono_1:to_rgb()},
+    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
+    highlight = {c.purple2:to_rgb(), c.mono_2:to_rgb()},
   }
 }
 
@@ -544,7 +548,7 @@ gls.right[4] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = condition.check_git_workspace,
-    highlight = {c.purple2:to_rgb(), c.mono_1:to_rgb()},
+    highlight = {c.purple2:to_rgb(), c.mono_2:to_rgb()},
   }
 }
 
@@ -553,7 +557,7 @@ gls.right[5] = {
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
     icon = '  ',
-    highlight = {c.green2:to_rgb(), c.mono_1:to_rgb()},
+    highlight = {c.green2:to_rgb(), c.mono_2:to_rgb()},
   }
 }
 gls.right[6] = {
@@ -561,7 +565,7 @@ gls.right[6] = {
     provider = 'DiffModified',
     condition = condition.hide_in_width,
     icon = ' 柳',
-    highlight = {colors.orange, c.mono_1:to_rgb()},
+    highlight = {colors.orange, c.mono_2:to_rgb()},
   }
 }
 gls.right[7] = {
@@ -569,14 +573,14 @@ gls.right[7] = {
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
     icon = '  ',
-    highlight = {c.red1:to_rgb(), c.mono_1:to_rgb()},
+    highlight = {c.red1:to_rgb(), c.mono_2:to_rgb()},
   }
 }
 
 gls.right[8] = {
   Rainbowblue = {
     provider = function() return ' ' end,
-    highlight = {c.mono_1:to_rgb(), c.mono_1:to_rgb()}
+    highlight = {c.mono_2:to_rgb(), c.mono_2:to_rgb()}
   },
 }
 
@@ -584,8 +588,8 @@ gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
     separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()},
-    highlight = {c.mono_1:to_rgb(), c.blue2:to_rgb()}
+    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
+    highlight = {c.blue2:to_rgb(),c.mono_2:to_rgb()}
   }
 }
 
@@ -593,14 +597,14 @@ gls.short_line_left[2] = {
   SFileName = {
     provider =  'SFileName',
     condition = condition.buffer_not_empty,
-    highlight = {c.syntax_bg:to_rgb(), c.mono_1:to_rgb()}
+    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
   }
 }
 
 gls.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
-    highlight = {c.mono_1:to_rgb(), c.mono_1:to_rgb()}
+    highlight = {c.mono_2:to_rgb(), c.mono_2:to_rgb()}
   }
 }
 

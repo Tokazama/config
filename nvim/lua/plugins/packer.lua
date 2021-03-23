@@ -38,6 +38,7 @@ execute 'packadd packer.nvim'
 --]]
 return require('packer').startup{function(use)
     use {'wbthomason/packer.nvim', opt=true}
+    use {'nvim-lua/completion-nvim'}
     use {'nvim-lua/plenary.nvim', opt=true}
     use 'nvim-lua/popup.nvim'
     use {
@@ -46,14 +47,21 @@ return require('packer').startup{function(use)
     }
     -- git
     use 'tpope/vim-fugitive'
-    use 'airblade/vim-gitgutter'
-
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      },
+      config = function()
+        require('gitsigns').setup()
+      end
+    }
     -- ### Specific Language Support / Syntax Highlighting / Formatting
     use 'JuliaEditorSupport/julia-vim'
     use 'kdheepak/JuliaFormatter.vim'
     use 'plasticboy/vim-markdown'
-
     use 'neovim/nvim-lspconfig'
+
     -- ### Misc
     use 'preservim/nerdcommenter'
     -- use {'npxbr/glow.nvim', run = ':GlowInstall'}

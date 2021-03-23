@@ -10,8 +10,6 @@ let g:vim_markdown_fenced_languages = ['python', 'bash=sh', 'jldoctest=julia', '
 
 let g:vim_markdown_folding_style_pythonic = 1
 
-nnoremap <silent> <leader>wt :call ToggleWindowHorizontalVerticalSplit()<cr>
-
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:indentLine_char = '│'
 

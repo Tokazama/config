@@ -56,7 +56,7 @@ local function set_mappings()
     -- move window down
     vim.api.nvim_set_keymap('', '<leader>wJ', ':wincmd J<CR> <C-W>=', { noremap = true, silent = true })
 
-    -- FIND
+    --[[ FIND
     -- git files
     vim.api.nvim_set_keymap('', '<leader>fg', ':GFiles<CR>', { noremap = true, silent = true })
     -- mark
@@ -72,6 +72,7 @@ local function set_mappings()
     vim.api.nvim_set_keymap('', '<leader>fp', ':ProjectFiles<CR>', { noremap = true, silent = true })
     -- history
     -- vim.api.nvim_set_keymap('', '<leader>fh', ':Telescope oldfiles<CR>', { noremap = true, silent = true })
+    -- ]]
 
     -- GIT
     -- git status
@@ -103,42 +104,6 @@ local function set_mappings()
     -- open julia split-horizontal
     vim.api.nvim_set_keymap('n', '<leader>jf', ':JuliaFormatterFormat<CR>', { noremap = true, silent = true }) 
     vim.api.nvim_set_keymap('s', '<leader>jf', ':\'<,>\'JuliaFormatterFormat<CR>', { noremap = true, silent = true })
-
-    vim.api.nvim_set_keymap('', '<leader>ll', ':lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.l = 'lsp-declaration'
-
-    vim.api.nvim_set_keymap('', '<leader>lf', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.f = 'lsp-definition'
-
-    vim.api.nvim_set_keymap('', '<leader>lh', ':lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.h = 'lsp-hover'
-
-    vim.api.nvim_set_keymap('', '<leader>li', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.i = 'lsp-implementation'
-
-    vim.api.nvim_set_keymap('', '<leader>ls', ':lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.s = 'lsp-signature-help'
-
-    vim.api.nvim_set_keymap('', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.t = 'lsp-type-definition'
-
-    vim.api.nvim_set_keymap('', '<leader>lr', ':lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.r = 'lsp-references'
-
-    vim.api.nvim_set_keymap('', '<leader>l0', ':lua vim.lsp.buf.document_symbol()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l['0'] = 'lsp-document-symbol'
-
-    vim.api.nvim_set_keymap('', '<leader>lw', ':lua vim.lsp.buf.workspace_symbol()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.w = 'lsp-workspace-symbol'
-
-    vim.api.nvim_set_keymap('', '<leader>lg', ':lua vim.lsp.buf.show_line_diagnostics()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.d = 'lsp-diagnostics-show'
-
-    vim.api.nvim_set_keymap('', '<leader>ln', ':lua vim.lsp.buf.goto_next()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.j = 'lsp-next-diagnostic'
-
-    vim.api.nvim_set_keymap('', '<leader>lp', ':lua vim.lsp.buf.goto_previous()<CR>', { noremap = true, silent = true })
-    -- let g:which_key_map.l.k = 'lsp-previous-diagnostic'
 
     vim.api.nvim_set_keymap('', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true})
 
