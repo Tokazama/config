@@ -11,7 +11,7 @@ local function set_options()
     vim.o.number         = true  -- But show the actual number for the line we're on
     vim.o.ignorecase     = true  -- Ignore case when searching...
     vim.o.smartcase      = true  -- ... unless there is a capital letter in the query
-    -- vim.o.hidden         = true  -- I like having buffers stay around
+    vim.o.hidden         = true  -- I like having buffers stay around
     vim.o.cursorline     = false  -- Highlight the current line
     vim.o.equalalways    = false -- I don't like my windows changing all the time
     vim.o.splitright     = true  -- Prefer windows splitting to the right
@@ -72,11 +72,12 @@ local function set_options()
     --vim.o.listchars = "tab:▸\ ,trail:·,extends:#,nbsp:·"
 
     --vim.o.complete       = ".,w,b,k"
-    vim.o.completeopt    = "menu,menuone,noselect,noinsert";
+    --vim.o.completeopt    = "menu,menuone,noselect,noinsert";
+    vim.o.completeopt    = "menuone,noselect"
 
     vim.g.mapleader = " "
-    --vim.o.background = "dark" -- or "light" for light mode
     vim.g.maplocaleader = ','
+
     if vim.fn.has('macunix') == 1 then
         vim.g.clipboard = {
             name = "macOS-clipboard",

@@ -107,7 +107,6 @@ local function set_mappings()
 
     vim.api.nvim_set_keymap('', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true})
 
-
     if vim.fn.has('macunix') == 1 then
         vim.api.nvim_set_keymap('i', '˙', '<Left>', { noremap = true, silent = true })
         vim.api.nvim_set_keymap('i', '∆', '<Down>', { noremap = true, silent = true })
@@ -144,6 +143,14 @@ local function set_mappings()
     --vim.api.nvim_set_keymap('t', '<c-j>', '<c-n><c-w>j', { noremap = true, silent = true })
     --vim.api.nvim_set_keymap('t', '<c-k>', '<c-n><c-w>k', { noremap = true, silent = true })
     --vim.api.nvim_set_keymap('t', '<c-l>', '<c-n><c-w>l', { noremap = true, silent = true })
+    --vim.api.nvim_set_keymap('n', '<leader>ff',  [[<Cmd>lua require('plugins.telescope').my_find_files()<CR>]], { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>ff',  [[<Cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>fb',  [[<Cmd>lua require('telescope.builtin').buffers({previewer = false})<CR>]], { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>fg',  [[<Cmd>lua require('telescope.builtin').git_files({previewer = false})<CR>]], { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>fh',  [[<Cmd>lua require('telescope.builtin').help_tags({previewer = false})<CR>]], { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>fm',  [[<Cmd>lua require('telescope.builtin').marks()<CR>]], { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>fk',  [[<Cmd>lua require('telescope.builtin').keymaps()<CR>]], { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>fs',  [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
 end
 
 set_mappings()

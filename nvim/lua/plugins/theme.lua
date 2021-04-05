@@ -10,20 +10,20 @@ local sto = s.standout
 local no = s.NONE
 local v = vim
 
-
+Color.new('pink', "#d291e4")
 v.g.colors_name = 'one'
 if v.o.background == 'dark' then
-    Color.new('mono_1', "#e9ebf0")
+    Color.new('mono_1', "#fefefe")
     Color.new('mono_2', "#828997")
     Color.new('mono_3', "#5c6370")
     Color.new('mono_4', "#4b5263")
     Color.new('cyan', "#56b6c2")
     Color.new('blue1', "#61afef")
-    Color.new('blue2', "#61afef")
+    Color.new('blue2', "#528bff")
     Color.new('purple1', "#c678dd")
     Color.new('purple2', "#a626a4")
     Color.new('green1', "#98c379")
-    Color.new('green2', "#50a14f")
+    Color.new('green2', "#1d6e1d")
     Color.new('red1', "#e06c75")
     Color.new('red2', "#be5046")
     Color.new('light_gold', "#d19a66")
@@ -36,6 +36,25 @@ if v.o.background == 'dark' then
     Color.new('special_grey', "#3b4048")
     Color.new('visual_grey', "#3e4452")
     Color.new('pmenu', "#333841")
+    Color.new('statusline_bg', "#ced2d9")
+
+    v.g.terminal_color_0  = "#828997"
+    v.g.terminal_color_8  = "#828997"
+    v.g.terminal_color_1  = "#e88388"
+    v.g.terminal_color_9  = "#e88388"
+    v.g.terminal_color_2  = "#a7cc8c"
+    v.g.terminal_color_10 = "#a7cc8c"
+    v.g.terminal_color_3  = "#ebca8d"
+    v.g.terminal_color_11 = "#ebca8d"
+    v.g.terminal_color_4  = "#72bef2"
+    v.g.terminal_color_12 = "#72bef2"
+    v.g.terminal_color_5  = "#d291e4"
+    v.g.terminal_color_13 = "#d291e4"
+    v.g.terminal_color_6  = "#65c2cd"
+    v.g.terminal_color_14 = "#65c2cd"
+    v.g.terminal_color_7  = "#e3e5e9"
+    v.g.terminal_color_15 = "#e3e5e9"
+    local theme_name = 'onedark'
 else
     Color.new('mono_1', "#494b53")
     Color.new('mono_2', "#696c77")
@@ -61,30 +80,53 @@ else
     Color.new('special_grey', "#d3d3d3")
     Color.new('visual_grey', "#d0d0d0")
     Color.new('pmenu', "#dfdfdf")
+    Color.new('statusline_bg', "#696c77")
+
+    v.g.terminal_color_0  = "#353a44"
+    v.g.terminal_color_8  = "#353a44"
+    v.g.terminal_color_1  = "#e88388"
+    v.g.terminal_color_9  = "#e88388"
+    v.g.terminal_color_2  = "#a7cc8c"
+    v.g.terminal_color_10 = "#a7cc8c"
+    v.g.terminal_color_3  = "#ebca8d"
+    v.g.terminal_color_11 = "#ebca8d"
+    v.g.terminal_color_4  = "#72bef2"
+    v.g.terminal_color_12 = "#72bef2"
+    v.g.terminal_color_5  = "#d291e4"
+    v.g.terminal_color_13 = "#d291e4"
+    v.g.terminal_color_6  = "#65c2cd"
+    v.g.terminal_color_14 = "#65c2cd"
+    v.g.terminal_color_7  = "#e3e5e9"
+    v.g.terminal_color_15 = "#e3e5e9"
+    
 end
 
-Color.new('pink', "#d291e4")
--------------------------
--- Vim Terminal Colors --
--------------------------
+require('lualine').setup{
+    options = {
+        theme = v.g.colors_name..vim.o.background,
 
-v.g.terminal_color_0  = "#353a44"
-v.g.terminal_color_8  = "#353a44"
-v.g.terminal_color_1  = "#e88388"
-v.g.terminal_color_9  = "#e88388"
-v.g.terminal_color_2  = "#a7cc8c"
-v.g.terminal_color_10 = "#a7cc8c"
-v.g.terminal_color_3  = "#ebca8d"
-v.g.terminal_color_11 = "#ebca8d"
-v.g.terminal_color_4  = "#72bef2"
-v.g.terminal_color_12 = "#72bef2"
-v.g.terminal_color_5  = "#d291e4"
-v.g.terminal_color_13 = "#d291e4"
-v.g.terminal_color_6  = "#65c2cd"
-v.g.terminal_color_14 = "#65c2cd"
-v.g.terminal_color_7  = "#e3e5e9"
-v.g.terminal_color_15 = "#e3e5e9"
-
+        section_separators = {'', ''},
+        component_separators = {'', ''},
+        icons_enabled = true,
+    },
+        sections = {
+            lualine_a = { {'mode', upper = true} },
+            lualine_b = { {'branch', icon = ''} },
+            lualine_c = { {'filename', file_status = true} },
+            lualine_x = { 'encoding', 'fileformat', 'filetype' },
+            lualine_y = { 'progress' },
+            lualine_z = { 'location'  },
+            },
+            inactive_sections = {
+            lualine_a = {  },
+            lualine_b = {  },
+            lualine_c = { 'filename' },
+            lualine_x = { 'location' },
+            lualine_y = {  },
+            lualine_z = {   }
+        },
+    extensions = { 'fzf' }
+}
 ----------------------
 -- Vim Editor Color --
 ----------------------
@@ -118,8 +160,8 @@ Group.new('Question',     c.blue1,        c.none,      no)
 Group.new('Search',       c.syntax_bg,       c.dark_gold,        no)
 Group.new('SpecialKey',   c.special_grey, c.none,      no)
 Group.new('Whitespace',   c.special_grey, c.none,      no)
-Group.new('StatusLine',   c.mono_2,       c.mono_2,  no)
-Group.new('StatusLineNC', c.mono_2,       c.mono_2,      no)
+Group.new('StatusLine',   c.syntax_bg,       c.statusline_bg,  no)
+Group.new('StatusLineNC', c.syntax_bg,       c.statusline_bg,      no)
 Group.new('TabLine',      c.mono_2,       c.visual_grey,    no)
 Group.new('TabLineFill',  c.mono_3,       c.visual_grey,    no)
 Group.new('TabLineSel',   c.mono_3,       c.blue1,          no)
@@ -377,234 +419,4 @@ Group.new('TSUnderline',          c.dark_gold, c.none, no)
 Group.new('TSURI',                c.dark_gold, c.none, no)
 Group.new('TSVariable',           c.cyan, c.none, no)
 Group.new('TSVariableBuiltin',    c.dark_gold, c.none, no)
-
-local gl = require('galaxyline')
-local diagnostic = require('galaxyline.provider_diagnostic')
-local colors = require('galaxyline.theme').default
-local condition = require('galaxyline.condition')
-local gls = gl.section
-gl.short_line_list = {'NvimTree','vista','dbui','packer'}
-
-gls.left[1] = {
-  RainbowRed = {
-    provider = function() return '▊ ' end,
-    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
-  },
-}
-gls.left[2] = {
-  ViMode = {
-    provider = function()
-      -- auto change color according the vim mode
-      local mode_color = {
-          n = c.red1:to_rgb(),
-          i = c.green2:to_rgb(),
-          v=c.blue2:to_rgb(),
-          [''] = c.blue2:to_rgb(),
-          V=c.blue2:to_rgb(),
-          c = c.purple2:to_rgb(),
-          no = c.red1:to_rgb(),
-          s = colors.orange,
-          S=colors.orange,
-          [''] = colors.orange,
-          ic = colors.yellow,
-          R = colors.violet,
-          Rv = colors.violet,
-          cv = c.red1:to_rgb(),
-          ce=c.red1:to_rgb(),
-          r = colors.cyan,
-          rm = colors.cyan,
-          ['r?'] = colors.cyan,
-          ['!']  = colors.red,
-          t = colors.red}
-      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()])
-      return ' 🅩 '
-    end,
-    highlight = {c.red1:to_rgb(), c.mono_2:to_rgb()},
-  },
-}
-
-gls.left[3] = {
-  FileSize = {
-    provider = 'FileSize',
-    condition = condition.buffer_not_empty,
-    separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_2:to_rgb()},
-    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
-  }
-}
-gls.left[4] ={
-  FileIcon = {
-    provider = 'FileIcon',
-    condition = condition.buffer_not_empty,
-    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, c.mono_2:to_rgb()},
-  }
-}
-
-gls.left[5] = {
-  FileName = {
-    provider = 'FileName',
-    condition = condition.buffer_not_empty,
-    separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_2:to_rgb()},
-    highlight = {c.purple2:to_rgb(), c.mono_2:to_rgb()}
-  }
-}
-
-gls.left[6] = {
-  LineInfo = {
-    provider = 'LineColumn',
-    separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(),c.mono_2:to_rgb()},
-    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
-  },
-}
-
-gls.left[7] = {
-  PerCent = {
-    provider = 'LinePercent',
-    separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
-    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
-  }
-}
---[[
-gls.left[8] = {
-  DiagnosticError = {
-    provider = 'DiagnosticError',
-    icon = '  ',
-    highlight = {c.red1:to_rgb(), c.mono_1:to_rgb()}
-  }
-}
-gls.left[9] = {
-  DiagnosticWarn = {
-    provider = 'DiagnosticWarn',
-    icon = '  ',
-    highlight = {colors.yellow, c.mono_1:to_rgb()},
-  }
-}
-
-gls.left[10] = {
-  DiagnosticHint = {
-    provider = 'DiagnosticHint',
-    icon = '  ',
-    highlight = {c.cyan:to_rgb(), c.mono_1:to_rgb()},
-  }
-}
-
-gls.left[11] = {
-  DiagnosticInfo = {
-    provider = 'DiagnosticInfo',
-    icon = '  ',
-    highlight = {c.blue2:to_rgb(), c.mono_1:to_rgb()},
-  }
-}
-]]--
-
-gls.mid[1] = {
-  ShowLspClient = {
-    provider = 'GetLspClient',
-    condition = function ()
-      local tbl = {['dashboard'] = true,['']=true}
-      if tbl[vim.bo.filetype] then
-        return false
-      end
-      return true
-    end,
-    icon = ' LSP:',
-    highlight = {c.blue2:to_rgb(), c.mono_2:to_rgb()}
-  }
-}
-gls.right[1] = {
-  FileEncode = {
-    provider = 'FileEncode',
-    condition = condition.hide_in_width,
-    separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
-    highlight = {c.green2:to_rgb(), c.mono_2:to_rgb()}
-  }
-}
-
-gls.right[2] = {
-  FileFormat = {
-    provider = 'FileFormat',
-    condition = condition.hide_in_width,
-    separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
-    highlight = {c.green2:to_rgb(), c.mono_2:to_rgb()}
-  }
-}
-
-gls.right[3] = {
-  GitIcon = {
-    provider = function() return '  ' end,
-    condition = condition.check_git_workspace,
-    separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
-    highlight = {c.purple2:to_rgb(), c.mono_2:to_rgb()},
-  }
-}
-
-gls.right[4] = {
-  GitBranch = {
-    provider = 'GitBranch',
-    condition = condition.check_git_workspace,
-    highlight = {c.purple2:to_rgb(), c.mono_2:to_rgb()},
-  }
-}
-
-gls.right[5] = {
-  DiffAdd = {
-    provider = 'DiffAdd',
-    condition = condition.hide_in_width,
-    icon = '  ',
-    highlight = {c.green2:to_rgb(), c.mono_2:to_rgb()},
-  }
-}
-gls.right[6] = {
-  DiffModified = {
-    provider = 'DiffModified',
-    condition = condition.hide_in_width,
-    icon = ' 柳',
-    highlight = {colors.orange, c.mono_2:to_rgb()},
-  }
-}
-gls.right[7] = {
-  DiffRemove = {
-    provider = 'DiffRemove',
-    condition = condition.hide_in_width,
-    icon = '  ',
-    highlight = {c.red1:to_rgb(), c.mono_2:to_rgb()},
-  }
-}
-
-gls.right[8] = {
-  Rainbowblue = {
-    provider = function() return ' ' end,
-    highlight = {c.mono_2:to_rgb(), c.mono_2:to_rgb()}
-  },
-}
-
-gls.short_line_left[1] = {
-  BufferType = {
-    provider = 'FileTypeName',
-    separator = ' │ ',
-    separator_highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()},
-    highlight = {c.blue2:to_rgb(),c.mono_2:to_rgb()}
-  }
-}
-
-gls.short_line_left[2] = {
-  SFileName = {
-    provider =  'SFileName',
-    condition = condition.buffer_not_empty,
-    highlight = {c.syntax_bg:to_rgb(), c.mono_2:to_rgb()}
-  }
-}
-
-gls.short_line_right[1] = {
-  BufferIcon = {
-    provider= 'BufferIcon',
-    highlight = {c.mono_2:to_rgb(), c.mono_2:to_rgb()}
-  }
-}
 

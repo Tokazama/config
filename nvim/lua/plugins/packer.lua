@@ -45,6 +45,8 @@ return require('packer').startup{function(use)
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
+
+    use {'nvim-treesitter/nvim-treesitter'}
     -- git
     use 'tpope/vim-fugitive'
     use {
@@ -66,26 +68,25 @@ return require('packer').startup{function(use)
     use 'preservim/nerdcommenter'
     -- use {'npxbr/glow.nvim', run = ':GlowInstall'}
     use 'hkupty/iron.nvim'
-    use 'junegunn/fzf'
-    use {'junegunn/fzf.vim', after='fzf'}
     use {'Yggdroot/indentLine',
         config = function()
             vim.g.indentLine_char = '│'
         end
     }
-    use {
-        'akinsho/nvim-bufferline.lua',
-        --config = conf.nvim_bufferline,
-        --requires = {'kyazdani42/nvim-web-devicons'}
-    }
     use 'kyazdani42/nvim-tree.lua'
+    use {
+        'hoob3rt/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    }
+
+    --[[
     use {
       'glepnir/galaxyline.nvim',
         branch = 'main',
         -- some optional icons
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
-    use {'norcalli/nvim-colorizer.lua'}
+    }]]--
+    use {'norcalli/nvim-colorizer.lua', opt=true}
     use {'tjdevries/colorbuddy.nvim'}
 end}
 

@@ -4,8 +4,6 @@ local function add(name) vim.api.nvim_command('packadd '..name) end
 add 'iron.nvim'
 -- add 'nerdtree'
 add 'nerdcommenter'
-add 'fzf'
-add 'fzf.vim'
 add 'vim-markdown'
 add 'plenary.nvim'
 
@@ -19,16 +17,15 @@ add 'vim-fugitive'
 add 'julia-vim'
 
 -- Themes
-add 'galaxyline.nvim'
 add 'nvim-web-devicons'
 add 'nvim-colorizer.lua'
 add 'indentLine'
 add 'nvim-tree.lua'
-add 'nvim-bufferline.lua'
 add 'colorbuddy.nvim'
 add 'nvim-lspconfig'
 add 'completion-nvim'
 add 'gitsigns.nvim'
+add 'lualine.nvim'
 
 require('plugins/repl')
 
@@ -55,23 +52,27 @@ nvim_colorizer()
 
 require('plenary')
 require('popup')
-require'bufferline'.setup{
-  options = {
-    view = "multiwindow", -- "default",
-    numbers = "buffer_id",
-    number_style = "superscript",
-    mappings = true,
-    --diagnostics = false,
-    show_buffer_close_icons = false,
-    -- persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-    -- can also be a table containing 2 custom separators
-    -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "thick",--"slant", -- | "thick" | "thin" | { 'any', 'any' },
-    -- enforce_regular_tabs = false | true,
-    -- always_show_bufferline = true | false,
-  }
-}
 require('plugins/telescope')
+
+-- nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+
+    --[[ FIND
+    -- git files
+    vim.api.nvim_set_keymap('', '<leader>fg', ':GFiles<CR>', { noremap = true, silent = true })
+    -- mark
+    vim.api.nvim_set_keymap('', '<leader>fm', ':Marks<CR>', { noremap = true, silent = true })
+    -- file
+    vim.api.nvim_set_keymap('', '<leader>ff', ':Files<CR>', { noremap = true, silent = true })
+
+    vim.api.nvim_set_keymap('', '<leader>ag', ':Ag<CR>', { noremap = true, silent = true })
+    -- line
+    -- buffers
+    vim.api.nvim_set_keymap('', '<leader>fb', ':Buffers<CR>', { noremap = true, silent = true })
+
+    vim.api.nvim_set_keymap('', '<leader>fp', ':ProjectFiles<CR>', { noremap = true, silent = true })
+    -- history
+    -- vim.api.nvim_set_keymap('', '<leader>fh', ':Telescope oldfiles<CR>', { noremap = true, silent = true })
+    -- ]]
 
 --require('plugins/lsp')
 
@@ -81,21 +82,5 @@ require('plugins/completion')
 
 require('plugins/gitsigns')
 
---[[
-
--- these are all the default values
-function nvim_bufferline()
-  require('bufferline').setup{
-    options = {
-      modified_icon = '✥',
-      buffer_close_icon = '',
-      mappings = true,
-      always_show_bufferline = false,
-    }
-  }
-end
-
-nvim_bufferline()
-]]--
-
+return finders
 
