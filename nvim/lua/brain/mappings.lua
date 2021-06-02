@@ -1,4 +1,5 @@
 
+
 -- vim.api.nvim_set_keymap('', '<leader>x', ':set number<CR>',  { noremap = true, silent = true })
 
 --local function project_mappings()
@@ -56,6 +57,38 @@ local function set_mappings()
     -- move window down
     vim.api.nvim_set_keymap('', '<leader>wJ', ':wincmd J<CR> <C-W>=', { noremap = true, silent = true })
 
+    if vim.fn.has('macunix') == 1 then
+        vim.api.nvim_set_keymap('i', '˙', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '∆', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '˚', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '¬', '<Right>', { noremap = true, silent = true })
+
+        vim.api.nvim_set_keymap('c', '˙', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '∆', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '˚', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '¬', '<Right>', { noremap = true, silent = true })
+
+        vim.api.nvim_set_keymap('t', '˙', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '∆', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '˚', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '¬', '<Right>', { noremap = true, silent = true })
+    else
+        vim.api.nvim_set_keymap('i', '<M-h>', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '<M-j>', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '<M-k>', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '<M-l>', '<Right>', { noremap = true, silent = true })
+
+        vim.api.nvim_set_keymap('c', '<M-h>', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '<M-j>', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '<M-k>', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '<M-l>', '<Right>', { noremap = true, silent = true })
+
+        vim.api.nvim_set_keymap('t', '<M-h>', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '<M-j>', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '<M-k>', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '<M-l>', '<Right>', { noremap = true, silent = true })
+    end
+
     --[[ FIND
     -- git files
     vim.api.nvim_set_keymap('', '<leader>fg', ':GFiles<CR>', { noremap = true, silent = true })
@@ -107,38 +140,6 @@ local function set_mappings()
 
     vim.api.nvim_set_keymap('', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true})
 
-    if vim.fn.has('macunix') == 1 then
-        vim.api.nvim_set_keymap('i', '˙', '<Left>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('i', '∆', '<Down>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('i', '˚', '<Up>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('i', '¬', '<Right>', { noremap = true, silent = true })
-
-        vim.api.nvim_set_keymap('c', '˙', '<Left>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('c', '∆', '<Down>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('c', '˚', '<Up>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('c', '¬', '<Right>', { noremap = true, silent = true })
-
-        vim.api.nvim_set_keymap('t', '˙', '<Left>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('t', '∆', '<Down>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('t', '˚', '<Up>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('t', '¬', '<Right>', { noremap = true, silent = true })
-    else
-        vim.api.nvim_set_keymap('i', '<M-h>', '<Left>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('i', '<M-j>', '<Down>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('i', '<M-k>', '<Up>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('i', '<M-l>', '<Right>', { noremap = true, silent = true })
-
-        vim.api.nvim_set_keymap('c', '<M-h>', '<Left>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('c', '<M-j>', '<Down>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('c', '<M-k>', '<Up>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('c', '<M-l>', '<Right>', { noremap = true, silent = true })
-
-        vim.api.nvim_set_keymap('t', '<M-h>', '<Left>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('t', '<M-j>', '<Down>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('t', '<M-k>', '<Up>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('t', '<M-l>', '<Right>', { noremap = true, silent = true })
-    end
-
     --vim.api.nvim_set_keymap('t', '<c-h>', '<c-n><c-w>h', { noremap = true, silent = true })
     --vim.api.nvim_set_keymap('t', '<c-j>', '<c-n><c-w>j', { noremap = true, silent = true })
     --vim.api.nvim_set_keymap('t', '<c-k>', '<c-n><c-w>k', { noremap = true, silent = true })
@@ -151,6 +152,7 @@ local function set_mappings()
     vim.api.nvim_set_keymap('n', '<leader>fm',  [[<Cmd>lua require('telescope.builtin').marks()<CR>]], { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<leader>fk',  [[<Cmd>lua require('telescope.builtin').keymaps()<CR>]], { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<leader>fs',  [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
+
 end
 
 set_mappings()

@@ -135,3 +135,4 @@ require'lspconfig'.julials.setup{
 
     vim.api.nvim_set_keymap('', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 ]]--
+
