@@ -10,8 +10,10 @@ vim.cmd("colorscheme one-nvim")
 require('lualine').setup({
     options = {
         theme = 'one'..vim.o.background,
-        section_separators = {'', ''},
-        component_separators = {'', ''},
+        section_separators = {' ', ' '},
+        component_separators = {' ', ' '},
+        -- section_separators = {'', ''},
+        -- component_separators = {'', ''},
         icons_enabled = true,
     },
     sections = {

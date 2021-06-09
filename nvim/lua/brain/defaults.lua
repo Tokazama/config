@@ -120,9 +120,15 @@ local load_core =function()
 
     -- TODO move markdown settings
     vim.g.vim_markdown_conceal = 0
+
     vim.g.vim_markdown_conceal_code_blocks = 0
+
     vim.g.vim_markdown_folding_style_pythonic = 1
+
     vim.g.vim_markdown_fenced_languages = {'python', 'bash=sh', 'jldoctest=julia', 'julia=julia'}
+
+    vim.g.vim_markdown_markdown_strikethrough = 1
+
     -- spell
     vim.o.spelllang='en_us'
     -- TODO should use .. to concatenate strings

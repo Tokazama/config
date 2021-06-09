@@ -109,7 +109,7 @@ local function set_mappings()
 
     -- GIT
     -- git status
-    vim.api.nvim_set_keymap('', '<leader>gs', ':Gstatus<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('', '<leader>gs', ':Git status<CR>', { noremap = true, silent = true })
     -- git diff
     vim.api.nvim_set_keymap('', '<leader>gd', ':Gdiff<CR>', { noremap = true, silent = true })
     -- git commit
