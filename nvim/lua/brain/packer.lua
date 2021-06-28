@@ -127,6 +127,8 @@ return require('packer').startup(function()
       end,
       opt=true
     }
+
+    use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
 end)
 
 

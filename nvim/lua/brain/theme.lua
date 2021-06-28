@@ -12,8 +12,6 @@ require('lualine').setup({
         theme = 'one'..vim.o.background,
         section_separators = {' ', ' '},
         component_separators = {' ', ' '},
-        -- section_separators = {'', ''},
-        -- component_separators = {'', ''},
         icons_enabled = true,
     },
     sections = {
@@ -41,16 +39,4 @@ require('lualine').setup({
         lualine_z = {}
     }
 })
---[[
-require('lualine').setup({
-    options = {
-        theme = 'one'..vim.o.background,
-        section_separators = {'', ''},
-        component_separators = {'', ''},
-        icons_enabled = true,
-    },
 
-    --extensions = { 'fzf' }
-})
-]]--
- 
