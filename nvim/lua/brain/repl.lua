@@ -1,4 +1,5 @@
 
+
 local iron = require('iron')
 local view = require("iron.view")
 local ll = require("iron.lowlevel")
@@ -99,11 +100,3 @@ end
 
 vim.api.nvim_set_keymap('', '<leader>rv', [[<Cmd>lua repl_split('vsplit')<Cr><Esc>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', '<leader>rs', [[<Cmd>lua repl_split('split')<Cr><Esc>]], { noremap = true, silent = true })
-
-
---[[
-        local showfn = function()
-            return 
-        end
-        require('iron.visibility').toggle(mem.bufnr. showfn)
-        ]]--

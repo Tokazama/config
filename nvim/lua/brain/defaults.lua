@@ -61,8 +61,15 @@ local load_core =function()
     --vim.g.loaded_netrwPlugin       = 1
     --vim.g.loaded_netrwSettings     = 1
     --vim.g.loaded_netrwFileHandlers = 1
+    --[[
 
-    vim.g.mapleader = " "
+setlocal nowrap
+setlocal nospell
+setlocal colorcolumn=92
+setlocal shiftwidth=4      "setlocal colorcolumn=-1
+
+    ]]--
+
     --vim.api.nvim_set_keymap('n',' ','',{noremap = true})
     --vim.api.nvim_set_keymap('x',' ','',{noremap = true})
     vim.o.magic          = true -- For regular expressions turn magic on
@@ -86,6 +93,7 @@ local load_core =function()
     vim.o.tm             = 1000
     vim.o.tw             = 500
     vim.o.wildmenu       = true  -- visual autocomplete for command menu
+    vim.o.colorcolumn    = '92'
 
     -- Tabs
     vim.o.autoindent     = true
@@ -130,9 +138,8 @@ local load_core =function()
     vim.g.vim_markdown_markdown_strikethrough = 1
 
     -- spell
-    vim.o.spelllang='en_us'
-    -- TODO should use .. to concatenate strings
-    vim.o.spellfile='/Users/zchristensen/.config/nvim/spell/en.utf-8.add'
+    vim.o.spelllang = 'en_us'
+    vim.o.spellfile = global.vim_path .. "/spell/en.uft-8.add";
     vim.wo.spell = false
 
     if vim.fn.has('macunix') == 1 then
@@ -150,10 +157,7 @@ local load_core =function()
     --vim.o.completeopt    = "menu,menuone,noselect,noinsert";
     vim.o.completeopt    = "menuone,noselect"
 
-    vim.g.mapleader = " "
-    vim.g.maplocaleader = ','
-
-    if vim.fn.has('macunix') == 1 then
+    if global.is_mac then
         vim.g.clipboard = {
             name = "macOS-clipboard",
             copy = {
@@ -166,6 +170,8 @@ local load_core =function()
             },
             cache_enabled = 0
         }
+        vim.g.python_host_prog = '/usr/bin/python'
+        vim.g.python3_host_prog = '/usr/local/bin/python3'
     end
 end
 

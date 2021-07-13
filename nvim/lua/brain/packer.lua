@@ -12,28 +12,28 @@ vim.cmd [[packadd packer.nvim]]
 vim.cmd 'autocmd BufWritePost packer.lua PackerCompile'
 
 --[[
-	/*
-	 * IMPORTS
-	 */
+    /*
+     * IMPORTS
+     */
 --]]
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
 --[[
-	/*
-	 * INSTALL PACKER
-	 */
+    /*
+     * INSTALL PACKER
+     */
 
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+    execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
 end
 
 --[[
-	/*
-	 * LOAD PLUGINS
-	 */
+    /*
+     * LOAD PLUGINS
+     */
 --]]
 
 --[[ include local projects for testing, etc.
@@ -58,64 +58,42 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
     }
+    use {'famiu/bufdelete.nvim'}
 
-    use {'nvim-treesitter/nvim-treesitter'}
-    -- git
-    use 'tpope/vim-fugitive'
     use {
-        'lewis6991/gitsigns.nvim',
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
+    -- git
+    use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+    use {'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
             require('gitsigns').setup()
         end
     }
     -- ### Specific Language Support / Syntax Highlighting / Formatting
-    use 'JuliaEditorSupport/julia-vim'
-    use 'kdheepak/JuliaFormatter.vim'
-    use 'plasticboy/vim-markdown'
-    use 'neovim/nvim-lspconfig'
+    use {'JuliaEditorSupport/julia-vim'}
+    use {'kdheepak/JuliaFormatter.vim'}
+    use {'plasticboy/vim-markdown'}
+    use {'neovim/nvim-lspconfig'}
+    use {'hkupty/iron.nvim'}
 
     -- ### Misc
     use 'preservim/nerdcommenter'
-    -- use {'npxbr/glow.nvim', run = ':GlowInstall'}
-    use 'hkupty/iron.nvim'
+    --[[
     use {'Yggdroot/indentLine',
         config = function()
             vim.g.indentLine_char = '│'
         end
     }
+    ]]--
     use 'kyazdani42/nvim-tree.lua'
-
     -- Theme
-    use {'norcalli/nvim-colorizer.lua',
-        config = function()
-        require 'colorizer'.setup {
-            css = { rgb_fn = true; };
-            scss = { rgb_fn = true; };
-            sass = { rgb_fn = true; };
-            stylus = { rgb_fn = true; };
-            vim = { names = true; };
-            tmux = { names = false; };
-            'javascript';
-            'javascriptreact';
-            'lua';
-            'typescript';
-            'typescriptreact';
-            html = {
-                mode = 'foreground';
-            }
-        }
-        end,
-        opt=true
-    }
-    use {'Th3Whit3Wolf/one-nvim'}
-    --use {'olimorris/onedark.nvim', requires = {'rktjmp/lush.nvim'}}
     use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
-    --use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-    --use {"glepnir/zephyr-nvim"}
-
+    use {'Th3Whit3Wolf/one-nvim'}
     --use {"folke/which-key.nvim"}
-
     use {
       "folke/zen-mode.nvim",
       config = function()
@@ -125,10 +103,7 @@ return require('packer').startup(function()
           -- refer to the configuration section below
         }
       end,
-      opt=true
     }
-
-    use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
 end)
 
 

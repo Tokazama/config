@@ -1,15 +1,5 @@
 
 
--- vim.api.nvim_set_keymap('', '<leader>x', ':set number<CR>',  { noremap = true, silent = true })
-
---local function project_mappings()
-    --vim.api.nvim_set_keymap('', '<leader>pn', ':tabnext<CR>',  { noremap = true, silent = true })
-    --vim.api.nvim_set_keymap('', '<leader>pp', ':tabprevious<CR>',  { noremap = true, silent = true })
-    --vim.api.nvim_set_keymap('', '<leader>po', ':tabnew<CR>',  { noremap = true, silent = true })
-    --vim.api.nvim_set_keymap('', '<leader>pc', ':tabclose<CR>',  { noremap = true, silent = true })
---end
---project_mappings()
-
 local function set_mappings()
     -- BUFFER
     -- first-buffer
@@ -23,7 +13,7 @@ local function set_mappings()
     -- home-buffer
     vim.api.nvim_set_keymap('', '<leader>bh', ':Startify<CR>', { noremap = true, silent = true })
     -- delete-buffer
-    vim.api.nvim_set_keymap('', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('', '<leader>bd', ':Bdelete!<CR>', { noremap = true, silent = true })
     --vim.api.nvim_set_keymap('', '<leader>bd', ':Bclose<cr>:tabclose<cr>gTbd<CR>', { noremap = true, silent = true })
 
     -- WINDOW
@@ -88,53 +78,6 @@ local function set_mappings()
         vim.api.nvim_set_keymap('t', '<M-k>', '<Up>', { noremap = true, silent = true })
         vim.api.nvim_set_keymap('t', '<M-l>', '<Right>', { noremap = true, silent = true })
     end
-
-    --[[ FIND
-    -- git files
-    vim.api.nvim_set_keymap('', '<leader>fg', ':GFiles<CR>', { noremap = true, silent = true })
-    -- mark
-    vim.api.nvim_set_keymap('', '<leader>fm', ':Marks<CR>', { noremap = true, silent = true })
-    -- file
-    vim.api.nvim_set_keymap('', '<leader>ff', ':Files<CR>', { noremap = true, silent = true })
-
-    vim.api.nvim_set_keymap('', '<leader>ag', ':Ag<CR>', { noremap = true, silent = true })
-    -- line
-    -- buffers
-    vim.api.nvim_set_keymap('', '<leader>fb', ':Buffers<CR>', { noremap = true, silent = true })
-
-    vim.api.nvim_set_keymap('', '<leader>fp', ':ProjectFiles<CR>', { noremap = true, silent = true })
-    -- history
-    -- vim.api.nvim_set_keymap('', '<leader>fh', ':Telescope oldfiles<CR>', { noremap = true, silent = true })
-    -- ]]
-
-    -- GIT
-    -- git status
-    vim.api.nvim_set_keymap('', '<leader>gs', ':Git status<CR>', { noremap = true, silent = true })
-    -- git diff
-    vim.api.nvim_set_keymap('', '<leader>gd', ':Gdiff<CR>', { noremap = true, silent = true })
-    -- git commit
-    vim.api.nvim_set_keymap('', '<leader>gc', ':Git commit<CR>', { noremap = true, silent = true })
-    -- git blame
-    vim.api.nvim_set_keymap('', '<leader>gb', ':Gblame<CR>', { noremap = true, silent = true })
-    -- git log
-    vim.api.nvim_set_keymap('', '<leader>gl', ':Glog<CR>', { noremap = true, silent = true })
-    -- git pull
-    vim.api.nvim_set_keymap('', '<leader>gp', ':Git pull<CR>', { noremap = true, silent = true })
-    -- git read
-    vim.api.nvim_set_keymap('', '<leader>gr', ':Gread<CR>', { noremap = true, silent = true })
-    -- git read
-    vim.api.nvim_set_keymap('', '<leader>gr', ':Gread<CR>', { noremap = true, silent = true })
-    -- git write
-    vim.api.nvim_set_keymap('', '<leader>gw', ':Gwrite<CR>', { noremap = true, silent = true })
-    -- git edit
-    vim.api.nvim_set_keymap('', '<leader>ge', ':Gedit<CR>', { noremap = true, silent = true })
-    -- git add
-    vim.api.nvim_set_keymap('', '<leader>ga', ':Git add', { noremap = true, silent = true })
-    -- git messenger
-    vim.api.nvim_set_keymap('', '<leader>gm', ': GitMessenger', { noremap = true, silent = true })
-
-
-    -- open julia split-horizontal
     vim.api.nvim_set_keymap('n', '<leader>jf', ':JuliaFormatterFormat<CR>', { noremap = true, silent = true }) 
     vim.api.nvim_set_keymap('s', '<leader>jf', ':\'<,>\'JuliaFormatterFormat<CR>', { noremap = true, silent = true })
 
@@ -153,6 +96,13 @@ local function set_mappings()
     vim.api.nvim_set_keymap('n', '<leader>fk',  [[<Cmd>lua require('telescope.builtin').keymaps()<CR>]], { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<leader>fs',  [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
 
+    --[[ neoterm
+    vim.api.nvim_set_keymap('', '<leader>rv', ':vertical 2Topen<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('', '<leader>rs', ':botright 2Topen<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('', '<leader>sl', ':TREPLSendLine<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('', '<leader>sf', ':TREPLSendFile<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('', '<leader>sv', ':TREPLSendSelection<CR>', { noremap = true, silent = true })
+    ]]--
 end
 
 set_mappings()
