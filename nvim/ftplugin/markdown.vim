@@ -1,6 +1,6 @@
 
 setlocal spell
-setlocal wrap
+"setlocal wrap
 "setlocal nonumber
 "setlocal nornu
 

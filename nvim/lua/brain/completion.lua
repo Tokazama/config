@@ -1,5 +1,4 @@
 
-
 return function ()
     vim.g.completion_chain_complete_list = {
         {complete_items = {"lsp", "snippet", "buffers"}},
@@ -28,3 +27,4 @@ return function ()
         File = 0
     }
 end
+

@@ -1,6 +1,5 @@
 
 local load_theme = function()
-    vim.o.background = 'light'
     require('lualine').setup({
         options = {
             theme = 'onedark',
@@ -26,8 +25,10 @@ local load_theme = function()
         },
     })
 
-    vim.api.nvim_command("colorscheme one-nvim")
-    vim.api.nvim_command("hi TODO guibg=#ffffff")
+
+    --vim.api.nvim_command("colorscheme zephyr")
+    --vim.api.nvim_command("colorscheme zone")
+    vim.g.one_nvim_transparent_bg = true
 end
 
 load_theme()

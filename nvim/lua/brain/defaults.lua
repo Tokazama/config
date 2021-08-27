@@ -43,24 +43,24 @@ local load_core =function()
             end
         end
     end
-    --vim.g.loaded_gzip              = 1
-    --vim.g.loaded_tar               = 1
-    --vim.g.loaded_tarPlugin         = 1
-    --vim.g.loaded_zip               = 1
-    --vim.g.loaded_zipPlugin         = 1
+    vim.g.loaded_gzip              = 1
+    vim.g.loaded_tar               = 1
+    vim.g.loaded_tarPlugin         = 1
+    vim.g.loaded_zip               = 1
+    vim.g.loaded_zipPlugin         = 1
     --vim.g.loaded_getscript         = 1
     --vim.g.loaded_getscriptPlugin   = 1
-    --vim.g.loaded_vimball           = 1
-    --vim.g.loaded_vimballPlugin     = 1
+    vim.g.loaded_vimball           = 1
+    vim.g.loaded_vimballPlugin     = 1
     --vim.g.loaded_matchit           = 1
     --vim.g.loaded_matchparen        = 1
     --vim.g.loaded_2html_plugin      = 1
     --vim.g.loaded_logiPat           = 1
-    --vim.g.loaded_rrhelper          = 1
-    --vim.g.loaded_netrw             = 1
-    --vim.g.loaded_netrwPlugin       = 1
-    --vim.g.loaded_netrwSettings     = 1
-    --vim.g.loaded_netrwFileHandlers = 1
+    vim.g.loaded_rrhelper          = 1
+    vim.g.loaded_netrw             = 1
+    vim.g.loaded_netrwPlugin       = 1
+    vim.g.loaded_netrwSettings     = 1
+    vim.g.loaded_netrwFileHandlers = 1
     --[[
 
 setlocal nowrap
@@ -104,7 +104,7 @@ setlocal shiftwidth=4      "setlocal colorcolumn=-1
     vim.o.softtabstop    = 4
     vim.o.expandtab      = true
     vim.o.breakindent    = true
-    vim.o.showbreak      = string.rep(' ', 3) -- Make it so that long lines wrap smartly
+    --vim.o.showbreak      = string.rep(' ', 3) -- Make it so that long lines wrap smartly
     vim.o.linebreak      = true
 
     vim.o.whichwrap      = "h,l,<,>,[,],~";
@@ -172,6 +172,37 @@ setlocal shiftwidth=4      "setlocal colorcolumn=-1
         }
         vim.g.python_host_prog = '/usr/bin/python'
         vim.g.python3_host_prog = '/usr/local/bin/python3'
+    end
+    if vim.fn.has('macunix') == 1 then
+        vim.api.nvim_set_keymap('i', '˙', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '∆', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '˚', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '¬', '<Right>', { noremap = true, silent = true })
+
+        vim.api.nvim_set_keymap('c', '˙', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '∆', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '˚', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '¬', '<Right>', { noremap = true, silent = true })
+
+        vim.api.nvim_set_keymap('t', '˙', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '∆', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '˚', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '¬', '<Right>', { noremap = true, silent = true })
+    else
+        vim.api.nvim_set_keymap('i', '<M-h>', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '<M-j>', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '<M-k>', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '<M-l>', '<Right>', { noremap = true, silent = true })
+
+        vim.api.nvim_set_keymap('c', '<M-h>', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '<M-j>', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '<M-k>', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('c', '<M-l>', '<Right>', { noremap = true, silent = true })
+
+        vim.api.nvim_set_keymap('t', '<M-h>', '<Left>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '<M-j>', '<Down>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '<M-k>', '<Up>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('t', '<M-l>', '<Right>', { noremap = true, silent = true })
     end
 end
 

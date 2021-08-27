@@ -42,12 +42,10 @@ function M.send_repl_selection()
   print(vim.inspect(pos1), vim.inspect(pos2))
 end
 
-
-
-
 vim.api.nvim_set_keymap('', '<leader>njs', [[:call luaeval("require('brain.repl').create_repl_split('julia')")<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', '<leader>njv', [[:call luaeval("require('brain.repl').create_repl_vsplit('julia')")<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', '<leader>sl', [[:call luaeval("require('brain.repl').send_repl_line()")<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>sl', [[:call luaeval("require('brain.repl').send_repl_selection()")<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<leader>sv', [[:call luaeval("require('iron').core.visual_send()")<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('v', '<leader>sl', [[:call luaeval("require('brain.repl').send_repl_selection()")<CR>]], { noremap = true, silent = true })
 
 return M

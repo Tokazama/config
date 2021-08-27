@@ -1,8 +1,7 @@
 
 -- Packer.nvim
 -- Bootstrap Packer.nvim if it doesn't exist
-local install_path = vim.fn.stdpath('data') ..
-                         '/site/pack/packer/opt/packer.nvim'
+local install_path = vim.fn.stdpath('data') ..'/site/pack/packer/opt/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.api.nvim_command(
         '!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
@@ -51,22 +50,19 @@ execute 'packadd packer.nvim'
 --]]
 return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt=true}
-    use {'nvim-lua/completion-nvim'}
+    -- use {'nvim-lua/completion-nvim'}
     use {'nvim-lua/plenary.nvim'}
     use {'nvim-lua/popup.nvim'}
-    use {
-        'nvim-telescope/telescope.nvim',
+    use {'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
     }
     use {'famiu/bufdelete.nvim'}
-
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     -- git
-    use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+    use {'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim'
+    }
     use {'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
@@ -81,29 +77,9 @@ return require('packer').startup(function()
     use {'hkupty/iron.nvim'}
 
     -- ### Misc
-    use 'preservim/nerdcommenter'
-    --[[
-    use {'Yggdroot/indentLine',
-        config = function()
-            vim.g.indentLine_char = '│'
-        end
-    }
-    ]]--
-    use 'kyazdani42/nvim-tree.lua'
-    -- Theme
+    use {'preservim/nerdcommenter'}
+    use {'kyazdani42/nvim-tree.lua'}
     use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
-    use {'Th3Whit3Wolf/one-nvim'}
-    --use {"folke/which-key.nvim"}
-    use {
-      "folke/zen-mode.nvim",
-      config = function()
-        require("zen-mode").setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        }
-      end,
-    }
+    use {"folke/which-key.nvim"}
 end)
-
 
