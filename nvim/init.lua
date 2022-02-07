@@ -1,14 +1,13 @@
 
 vim.g.mapleader = " "
 vim.g.maplocaleader = ','
-vim.o.background = 'dark'
 
 require('brain.defaults')
 require('brain.packer')
 require('brain.telescope')
 require('brain.treesitter')
 --require('brain.completion')
-require('brain.repl')
+--require('brain.repl')
 require('brain.mappings')
 require("brain.which_key")
 
@@ -23,11 +22,14 @@ vim.cmd[[autocmd TermOpen * startinsert]]
 --vim.cmd[[command! PackerClean lua require('brain.packer').clean()]]
 
 --vim.api.nvim_command('syntax on')
-require('brain.theme')
-require('cortex')
-vim.api.nvim_command("colorscheme cortex")
+--require('brain.theme')
+vim.api.nvim_command("colorscheme github_light")
 
---vim.api.nvim_command('syntax off')
+vim.g.startup_bookmarks = {
+  ["J"] = '~/journal',
+  ["A"] = '~/projects/ArrayInterface.jl',
+  ["K"] = '~/projects/KeyedIndices.jl',
+  ["S"] = '~/projects/Static.jl',
+  ["T"] = '~/projects/SpatioTemporalTraits.jl'
+}
 
--- TODO vim.cmd[["highlight! TODO guibg=#ffffff"]]
---vim.api.nvim_command("highlight TODO guibg=#ffffff")

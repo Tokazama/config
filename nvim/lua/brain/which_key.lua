@@ -70,8 +70,12 @@ wk.register({
     },
     g = {
         name = "git",
-        b = {"<cmd>Telescope git_branches<cr>", "branch" },
+        b = {"<Cmd>Telescope git_branches<cr>", "branch" },
         o = {"<Cmd>Neogit kind=split<CR>", "open Neogit"},
+    },
+    m = {
+        name = "mode",
+        z = {[[<Cmd>TZAtaraxis<CR>]], "zen"}
     },
     w = {
         name = "window",
@@ -87,6 +91,27 @@ wk.register({
         J = {[[:wincmd J<CR> <C-W>=]], 'move down'},
         s = {[[<Cmd>split<CR>]], 'split'},
         v = {[[<Cmd>vsplit<CR>]], 'vsplit'},
-    }
+    },
+    t = {
+        name = "term",
+        s = {[[<Cmd>ToggleTerm direction=horizontal<CR>]], 'horizontal'},
+        v = {[[<Cmd>ToggleTerm direction=vertical<CR>]], 'vertical'},
+        t = {[[<Cmd>ToggleTerm<CR>]], 'toggle'}
+    },
+    j = {
+        name = "julia",
+        s = {[[<Cmd>TermExec cmd="julia", direction=horizontal<CR>]], 'horizontal'},
+        v = {[[<Cmd>TermExec cmd="julia", size=vim.o.columns*0.4 direction=vertical<CR>]], 'vertical'},
+    },
 }, {prefix = "<leader>"})
+
+--[[
+function my_line_test()
+  local lnum = vim.fn.line('.')
+  vim.cmd(string.format("1TermExec cmd='bundle exec rspec %%:%d", lnum))
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+]]--
 
